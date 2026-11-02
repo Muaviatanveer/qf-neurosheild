@@ -80,26 +80,29 @@ flowchart TB
 
 ## 📐 Mathematical Foundations & Governing Formulations
 
-<details open>
-<summary><b>Click to expand formal equations across all 5 scientific subsystems</b></summary>
-
-<br>
-
 ### 1. Dual-Stream Spatial-Wavelet Cross-Attention (`SW-CrossViT`)
 Every input image $I \in \mathbb{R}^{3 \times 224 \times 224}$ is decomposed on the GPU via 2-level 2D Haar discrete wavelet transform into orthogonal sub-bands $\{W_{\text{LH}}, W_{\text{HL}}, W_{\text{HH}}\}$. Spatial ViT patch embeddings $Z_S \in \mathbb{R}^{196 \times 768}$ and wavelet patch embeddings $Z_W \in \mathbb{R}^{196 \times 768}$ interact through 8-head cross-attention and a spatial-frequency discrepancy manifold:
 
-$$Z_{\text{cross}} = \text{Softmax}\left(\frac{Z_S Z_W^T}{\sqrt{d_k}}\right)Z_W, \qquad \Delta Z_{\text{disc}} = \left| Z_S - Z_W \right|$$
+$$
+Z_{\text{cross}} = \text{Softmax}\left(\frac{Z_S Z_W^T}{\sqrt{d_k}}\right)Z_W, \qquad \Delta Z_{\text{disc}} = \left| Z_S - Z_W \right|
+$$
 
-$$\text{Fused Feature Vector: } z = \left[ \text{CLS} \;\|\; \frac{1}{196}\sum_{i=1}^{196} Z_{\text{cross}}^{(i)} \;\|\; \frac{1}{196}\sum_{i=1}^{196} \Delta Z_{\text{disc}}^{(i)} \right] \in \mathbb{R}^{2304}$$
+$$
+z = \left[ \text{CLS} \;\|\; \frac{1}{196}\sum_{i=1}^{196} Z_{\text{cross}}^{(i)} \;\|\; \frac{1}{196}\sum_{i=1}^{196} \Delta Z_{\text{disc}}^{(i)} \right] \in \mathbb{R}^{2304}
+$$
 
-$$\hat{y} = \sigma\left(\mathbf{W}_2 \cdot \text{GELU}(\mathbf{W}_1 z + b_1) + b_2\right)$$
+$$
+\hat{y} = \sigma\left(\mathbf{W}_2 \cdot \text{GELU}(\mathbf{W}_1 z + b_1) + b_2\right)
+$$
 
 ---
 
 ### 2. 3rd-Order Bispectral Quadratic Phase Coupling
 While 2nd-order power spectra $|F(\omega)|^2$ discard phase relationships, the 3rd-order bispectrum detects nonlinear phase harmonic coupling induced by generative upsampling layers across radial frequency slices:
 
-$$\mathcal{B}(\omega_1, \omega_2) = \frac{\left| \mathbb{E}\left[ F(\omega_1) F(\omega_2) F^*(\omega_1 + \omega_2) \right] \right|}{\sqrt{\mathbb{E}\left[|F(\omega_1) F(\omega_2)|^2\right] \cdot \mathbb{E}\left[|F(\omega_1 + \omega_2)|^2\right]}}$$
+$$
+\mathcal{B}(\omega_1, \omega_2) = \frac{\left| \mathbb{E}\left[ F(\omega_1) F(\omega_2) F^*(\omega_1 + \omega_2) \right] \right|}{\sqrt{\mathbb{E}\left[|F(\omega_1) F(\omega_2)|^2\right] \cdot \mathbb{E}\left[|F(\omega_1 + \omega_2)|^2\right]}}
+$$
 
 When $\mathcal{B}(\omega_1, \omega_2) \to 1$, quadratic phase coupling signifies synthetic convolutional upsampling grid footprints.
 
@@ -108,27 +111,39 @@ When $\mathcal{B}(\omega_1, \omega_2) \to 1$, quadratic phase coupling signifies
 ### 3. Generalized Benford's Law 2D-DCT Quantization Divergence
 In authentic natural imagery, the distribution of leading significant digits $d \in \{1, \dots, 9\}$ of $8 \times 8$ block DCT AC coefficients adheres to Generalized Benford's Law. Generative synthesis and re-sampling induce anomalous divergence measured via Kullback-Leibler distance:
 
-$$D_{\text{KL}}(P_{\text{emp}} \parallel P_{\text{Benford}}) = \sum_{d=1}^9 P_{\text{emp}}(d) \ln\left(\frac{P_{\text{emp}}(d)}{P_{\text{Benford}}(d)}\right), \quad P_{\text{Benford}}(d) = \frac{\log_{10}(1 + d^{-q})}{\sum_{k=1}^9 \log_{10}(1 + k^{-q})}$$
+$$
+D_{\text{KL}}(P_{\text{emp}} \parallel P_{\text{Benford}}) = \sum_{d=1}^9 P_{\text{emp}}(d) \ln\left(\frac{P_{\text{emp}}(d)}{P_{\text{Benford}}(d)}\right), \quad P_{\text{Benford}}(d) = \frac{\log_{10}(1 + d^{-q})}{\sum_{k=1}^9 \log_{10}(1 + k^{-q})}
+$$
 
 ---
 
 ### 4. Byzantine-Screened Federated Aggregation Condition
 Participating institutions submit localized parameter updates $W_{t+1}^{(k)}$. The permissioned control-plane contract (`FederatedAuditLedger.sol`) asserts deterministic model provenance and screens for Byzantine gradient poisoning prior to $\text{FedAvg}$ accumulation:
 
-$$W_{t+1} = \sum_{k=1}^{K} \frac{n_k}{N} W_{t+1}^{(k)} \quad \Longleftrightarrow \quad \forall k: \; \|W_{t+1}^{(k)} - W_t\|_2 \le \tau_{\max} \quad (\tau_{\max} = 5.0)$$
+$$
+W_{t+1} = \sum_{k=1}^{K} \frac{n_k}{N} W_{t+1}^{(k)} \quad \Longleftrightarrow \quad \forall k: \; \|W_{t+1}^{(k)} - W_t\|_2 \le \tau_{\max} \quad (\tau_{\max} = 5.0)
+$$
 
-$$\text{Block Hash: } H_{\text{block}} = \text{SHA-256}\left( H_{\text{prev}} \;\Vert\; \text{Round} \;\Vert\; \text{Addr}_k \;\Vert\; \text{SHA-256}(W_{t+1}^{(k)}) \right)$$
+**Cryptographic SHA-256 Provenance Block Hash:**
+
+$$
+H_{\text{block}} = \text{SHA-256}\left( H_{\text{prev}} \;\|\; \text{Round} \;\|\; \text{Addr}_k \;\|\; \text{SHA-256}(W_{t+1}^{(k)}) \right)
+$$
 
 ---
 
 ### 5. Discrete Neuromorphic Spiking Dynamics (LIF)
 The 10-step temporal spiking classifier head processes the spatial-wavelet feature representation via discrete Leaky Integrate-and-Fire neurons with surrogate fast-sigmoid gradients:
 
-$$V_{t+1} = \beta V_t + W x_{t+1} - S_t V_{\text{th}}, \qquad S_t = \Theta(V_t - V_{\text{th}}), \qquad \frac{\partial S_t}{\partial V_t} = \frac{1}{(1 + 25|V_t - V_{\text{th}}|)^2}$$
+$$
+V_{t+1} = \beta V_t + W x_{t+1} - S_t V_{\text{th}}, \qquad S_t = \Theta(V_t - V_{\text{th}}), \qquad \frac{\partial S_t}{\partial V_t} = \frac{1}{(1 + 25|V_t - V_{\text{th}}|)^2}
+$$
 
-$$\text{Temporal Firing Rate Output: } \hat{y}_c = \frac{1}{T} \sum_{t=1}^{T} S_{t, c} \quad (T = 10, \; \beta = 0.90)$$
+**Temporal Firing Rate Integration:**
 
-</details>
+$$
+\hat{y}_c = \frac{1}{T} \sum_{t=1}^{T} S_{t, c} \quad (T = 10, \; \beta = 0.90)
+$$
 
 ---
 
