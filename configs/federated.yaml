@@ -1,0 +1,25 @@
+# configs/federated.yaml
+federated:
+  num_clients: 3
+  num_rounds: 3
+  local_epochs: 1
+  client_names:
+    0: "University_A"
+    1: "University_B"
+    2: "Media_Verification_Lab"
+
+dataset:
+  metadata_csv: "data/splits/metadata.csv"
+  num_frames: 8
+  image_size: 224
+  crop_face: true
+
+model:
+  pretrained_name: "google/vit-base-patch16-224-in21k"
+  num_classes: 2
+  freeze_backbone: true
+
+training:
+  batch_size: 2
+  learning_rate: 0.0005
+  save_dir: "checkpoints"

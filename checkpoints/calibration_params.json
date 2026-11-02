@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "optimal_threshold": 0.659667,
+    "scale": 7.2267
+  },
+  "federated": {
+    "optimal_threshold": 0.775595,
+    "scale": 15.0
+  },
+  "quantum": {
+    "optimal_threshold": 0.502104,
+    "scale": 15.0
+  },
+  "spiking": {
+    "optimal_threshold": 0.502934,
+    "scale": 2.6501
+  },
+  "sw_cross_vit": {
+    "optimal_threshold": 0.146199,
+    "scale": 1.0
+  }
+}

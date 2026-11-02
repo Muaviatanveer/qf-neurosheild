@@ -1,0 +1,282 @@
+[
+  {
+    "block_index": 0,
+    "timestamp": 1792330896.632797,
+    "tx_type": "GENESIS_GLOBAL_MODEL",
+    "prev_block_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "payload": {
+      "round": 0,
+      "global_model_hash": "0xbcec45b88afaafc2bc714b6144ea2bd31d65d7a3c2ee49a1b8f04fd82d0c21de",
+      "aggregation_policy": "INITIAL_W0",
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x59900b28c4c005a73ea0f6fb9943a68d581d143d434d1ab46e0a16d45fbd8215"
+  },
+  {
+    "block_index": 1,
+    "timestamp": 1792330896.632894,
+    "tx_type": "REGISTER_PARTICIPANT",
+    "prev_block_hash": "0x59900b28c4c005a73ea0f6fb9943a68d581d143d434d1ab46e0a16d45fbd8215",
+    "payload": {
+      "client_address": "0xClient_01_University_A",
+      "org_name": "University_A"
+    },
+    "block_hash": "0x08c7125204e66484ffe0a0f8529604bbde52f8176676fe0dcf6486e39dbd8640"
+  },
+  {
+    "block_index": 2,
+    "timestamp": 1792330897.079198,
+    "tx_type": "REGISTER_PARTICIPANT",
+    "prev_block_hash": "0x08c7125204e66484ffe0a0f8529604bbde52f8176676fe0dcf6486e39dbd8640",
+    "payload": {
+      "client_address": "0xClient_02_University_B",
+      "org_name": "University_B"
+    },
+    "block_hash": "0xbd921652fcb259b14a860fbf60207344e272db589c5a38b9d531d074f73ffc15"
+  },
+  {
+    "block_index": 3,
+    "timestamp": 1792330897.518017,
+    "tx_type": "REGISTER_PARTICIPANT",
+    "prev_block_hash": "0xbd921652fcb259b14a860fbf60207344e272db589c5a38b9d531d074f73ffc15",
+    "payload": {
+      "client_address": "0xClient_03_Media_Verification_Lab",
+      "org_name": "Media_Verification_Lab"
+    },
+    "block_hash": "0x938431d2b8d01087d6cf92807f8d3d5f8ccb15f60ec141d4abc32e7ae48f533c"
+  },
+  {
+    "block_index": 4,
+    "timestamp": 1792330898.4863749,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0x938431d2b8d01087d6cf92807f8d3d5f8ccb15f60ec141d4abc32e7ae48f533c",
+    "payload": {
+      "round": 1,
+      "client_address": "0xClient_01_University_A",
+      "org_name": "University_A",
+      "base_model_hash": "0xbcec45b88afaafc2bc714b6144ea2bd31d65d7a3c2ee49a1b8f04fd82d0c21de",
+      "update_hash": "0xff2713abaab83129f9bc7d70a6fe9cea5b2d5e19727e5c2a48429691fdcfe175",
+      "delta_l2_norm": 0.0251,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0xbea19bcc35e8c2a1ba469bb74e716f77051f911179e6e841e342acc934ddd711"
+  },
+  {
+    "block_index": 5,
+    "timestamp": 1792330898.788064,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0xbea19bcc35e8c2a1ba469bb74e716f77051f911179e6e841e342acc934ddd711",
+    "payload": {
+      "round": 1,
+      "client_address": "0xClient_02_University_B",
+      "org_name": "University_B",
+      "base_model_hash": "0xbcec45b88afaafc2bc714b6144ea2bd31d65d7a3c2ee49a1b8f04fd82d0c21de",
+      "update_hash": "0x4c885d10ac9a172e60269076046c93bbf89327ae2042eb0bb1ae175dfd022ff0",
+      "delta_l2_norm": 0.0249,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x55e613a3aa05f75962b213bb7e323992d1d811d09af076ec2966b179744bf471"
+  },
+  {
+    "block_index": 6,
+    "timestamp": 1792330899.435363,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0x55e613a3aa05f75962b213bb7e323992d1d811d09af076ec2966b179744bf471",
+    "payload": {
+      "round": 1,
+      "client_address": "0xClient_03_Media_Verification_Lab",
+      "org_name": "Media_Verification_Lab",
+      "base_model_hash": "0xbcec45b88afaafc2bc714b6144ea2bd31d65d7a3c2ee49a1b8f04fd82d0c21de",
+      "update_hash": "0xd925a1a5e3b486e57f65e7180f07aa324b1fc47ae54bfaa0afd1bc7ef531b2f7",
+      "delta_l2_norm": 0.0272,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x8ecc013414ee0a929ec46b90c88370bcac23ec94d69aac1efe050880a6961fb2"
+  },
+  {
+    "block_index": 7,
+    "timestamp": 1792330899.435414,
+    "tx_type": "REJECTED_UPDATE",
+    "prev_block_hash": "0x8ecc013414ee0a929ec46b90c88370bcac23ec94d69aac1efe050880a6961fb2",
+    "payload": {
+      "round": 1,
+      "client": "0xClient_01_University_A",
+      "base_model_hash": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "expected_base_hash": "0xbcec45b88afaafc2bc714b6144ea2bd31d65d7a3c2ee49a1b8f04fd82d0c21de",
+      "reason": "WRONG_BASE_MODEL_HASH"
+    },
+    "block_hash": "0xed25034b8c688aecd59a852d76567865e03167e7aedfacc795c15f9cdbe35036"
+  },
+  {
+    "block_index": 8,
+    "timestamp": 1792330899.435437,
+    "tx_type": "REJECTED_UPDATE",
+    "prev_block_hash": "0xed25034b8c688aecd59a852d76567865e03167e7aedfacc795c15f9cdbe35036",
+    "payload": {
+      "round": 1,
+      "client": "0xClient_01_University_A",
+      "reason": "DUPLICATE_SUBMISSION"
+    },
+    "block_hash": "0xda0ba427ee8d55eabad2eb0f0c2b72597dcda183f659e6d418fb059c195e481a"
+  },
+  {
+    "block_index": 9,
+    "timestamp": 1792330899.4354491,
+    "tx_type": "REGISTER_PARTICIPANT",
+    "prev_block_hash": "0xda0ba427ee8d55eabad2eb0f0c2b72597dcda183f659e6d418fb059c195e481a",
+    "payload": {
+      "client_address": "0xClient_99_Compromised_Node",
+      "org_name": "Compromised_Node"
+    },
+    "block_hash": "0xdff037128c325883616aea85b62d78c92e48622002b45b13ca3f5569098abfc0"
+  },
+  {
+    "block_index": 10,
+    "timestamp": 1792330899.4355998,
+    "tx_type": "REJECTED_UPDATE",
+    "prev_block_hash": "0xdff037128c325883616aea85b62d78c92e48622002b45b13ca3f5569098abfc0",
+    "payload": {
+      "round": 1,
+      "client": "0xClient_99_Compromised_Node",
+      "update_hash": "0x77e31983d4ee31a703dc2a30d62e5e44e756e05ec6bc3b9028d051aa0e5c08fe",
+      "delta_l2_norm": 554.6737,
+      "reason": "MODEL_POISONING_ANOMALY_DETECTED"
+    },
+    "block_hash": "0x9e74484886e4fc998b7af3b930d977617938b40f2a9d4b8643c3fa51da4fef0f"
+  },
+  {
+    "block_index": 11,
+    "timestamp": 1792330899.4356868,
+    "tx_type": "RECORD_GLOBAL_MODEL",
+    "prev_block_hash": "0x9e74484886e4fc998b7af3b930d977617938b40f2a9d4b8643c3fa51da4fef0f",
+    "payload": {
+      "round": 1,
+      "global_model_hash": "0x6921b8008ca3c3f73b4867f483f9b7c113f549f68f0f47d39062d4d607f75b20",
+      "aggregation_policy": "FedAvg-Robust",
+      "validation_status": "FINALIZED"
+    },
+    "block_hash": "0x1b9925a0b1bdd2e5f03d274f0b59fe4729791f50ed5cbdbec4e2fa3e1c6ed095"
+  },
+  {
+    "block_index": 12,
+    "timestamp": 1792330900.159331,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0x1b9925a0b1bdd2e5f03d274f0b59fe4729791f50ed5cbdbec4e2fa3e1c6ed095",
+    "payload": {
+      "round": 2,
+      "client_address": "0xClient_01_University_A",
+      "org_name": "University_A",
+      "base_model_hash": "0x6921b8008ca3c3f73b4867f483f9b7c113f549f68f0f47d39062d4d607f75b20",
+      "update_hash": "0xc269289906a0169262dc061232d821e8d4985dffdefbb608e6601c19378201aa",
+      "delta_l2_norm": 0.0248,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x8c234f47616a12443ad94795351aeeb682cca89dce6244c832b336f676da7062"
+  },
+  {
+    "block_index": 13,
+    "timestamp": 1792330900.4691992,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0x8c234f47616a12443ad94795351aeeb682cca89dce6244c832b336f676da7062",
+    "payload": {
+      "round": 2,
+      "client_address": "0xClient_02_University_B",
+      "org_name": "University_B",
+      "base_model_hash": "0x6921b8008ca3c3f73b4867f483f9b7c113f549f68f0f47d39062d4d607f75b20",
+      "update_hash": "0xa96b6da526c32d2b36436c970881778533b30d0bcf2310c1208b00753eff862a",
+      "delta_l2_norm": 0.0252,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x27dab0b45cb0693aa7f826c2aab00b294d697a943e31374e5edd984488af5fea"
+  },
+  {
+    "block_index": 14,
+    "timestamp": 1792330901.126521,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0x27dab0b45cb0693aa7f826c2aab00b294d697a943e31374e5edd984488af5fea",
+    "payload": {
+      "round": 2,
+      "client_address": "0xClient_03_Media_Verification_Lab",
+      "org_name": "Media_Verification_Lab",
+      "base_model_hash": "0x6921b8008ca3c3f73b4867f483f9b7c113f549f68f0f47d39062d4d607f75b20",
+      "update_hash": "0xb0459be7431c4737b277072bfd838e621ee9f3cec40c631d064bc630cbd066a1",
+      "delta_l2_norm": 0.0271,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x23ef6570ca413ca4203e623705dea77a82b5827e3dcec4c369cbdd0f6a9a4871"
+  },
+  {
+    "block_index": 15,
+    "timestamp": 1792330901.126634,
+    "tx_type": "RECORD_GLOBAL_MODEL",
+    "prev_block_hash": "0x23ef6570ca413ca4203e623705dea77a82b5827e3dcec4c369cbdd0f6a9a4871",
+    "payload": {
+      "round": 2,
+      "global_model_hash": "0x1d79d000cc19c4c9f07412e653a99b00fb0c4490abbf9c28c1916b01a26a926e",
+      "aggregation_policy": "FedAvg-Robust",
+      "validation_status": "FINALIZED"
+    },
+    "block_hash": "0xc055d7913975f75fb84e4cb33cba1764fca35517de74103f28e8dd0f054f0ba5"
+  },
+  {
+    "block_index": 16,
+    "timestamp": 1792330901.851234,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0xc055d7913975f75fb84e4cb33cba1764fca35517de74103f28e8dd0f054f0ba5",
+    "payload": {
+      "round": 3,
+      "client_address": "0xClient_01_University_A",
+      "org_name": "University_A",
+      "base_model_hash": "0x1d79d000cc19c4c9f07412e653a99b00fb0c4490abbf9c28c1916b01a26a926e",
+      "update_hash": "0xb7d174e722dab0ea61db108018412568fc730a22d22f0b339f01ea21ecf4051f",
+      "delta_l2_norm": 0.025,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x945e65d483977f5ba301266f208e5cdf9caf9b2576396102270b54f9f64eaee4"
+  },
+  {
+    "block_index": 17,
+    "timestamp": 1792330902.1628108,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0x945e65d483977f5ba301266f208e5cdf9caf9b2576396102270b54f9f64eaee4",
+    "payload": {
+      "round": 3,
+      "client_address": "0xClient_02_University_B",
+      "org_name": "University_B",
+      "base_model_hash": "0x1d79d000cc19c4c9f07412e653a99b00fb0c4490abbf9c28c1916b01a26a926e",
+      "update_hash": "0xb6bf2257d8b92f092f83096e8f2a26a90651a1b9c296f7050ae61675de187af5",
+      "delta_l2_norm": 0.025,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0x428a5b4277fab4994d34ff81a6f42031821d1501963f4ca4faf61b31e0e4c6fc"
+  },
+  {
+    "block_index": 18,
+    "timestamp": 1792330902.801835,
+    "tx_type": "RECORD_UPDATE",
+    "prev_block_hash": "0x428a5b4277fab4994d34ff81a6f42031821d1501963f4ca4faf61b31e0e4c6fc",
+    "payload": {
+      "round": 3,
+      "client_address": "0xClient_03_Media_Verification_Lab",
+      "org_name": "Media_Verification_Lab",
+      "base_model_hash": "0x1d79d000cc19c4c9f07412e653a99b00fb0c4490abbf9c28c1916b01a26a926e",
+      "update_hash": "0x5f45e8a2393c6203eef6912cfc8fa3f4490b4139cb2d163480b9d755b9a508ee",
+      "delta_l2_norm": 0.0272,
+      "validation_status": "APPROVED"
+    },
+    "block_hash": "0xee09a77362527ebc0066d683a2daee3092d0ad4c28a2d54f0e0cf275eac758ff"
+  },
+  {
+    "block_index": 19,
+    "timestamp": 1792330902.8019571,
+    "tx_type": "RECORD_GLOBAL_MODEL",
+    "prev_block_hash": "0xee09a77362527ebc0066d683a2daee3092d0ad4c28a2d54f0e0cf275eac758ff",
+    "payload": {
+      "round": 3,
+      "global_model_hash": "0xc6e742142770500d4b52d6ade8a6a151a2213701a516e78a6a88bd11cad74a3e",
+      "aggregation_policy": "FedAvg-Robust",
+      "validation_status": "FINALIZED"
+    },
+    "block_hash": "0xd603206c91832c331a2ca96a860921e3207f26c3df1d96ab60e6f1bcc9c52ce0"
+  }
+]

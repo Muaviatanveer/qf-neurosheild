@@ -1,0 +1,25 @@
+{
+  "dataset": "140k Real and Fake Faces (Full Test Split)",
+  "total_images_evaluated": 140000,
+  "real_count": 70000,
+  "fake_count": 70000,
+  "execution_seconds": 1057.71,
+  "throughput_fps": 132.4,
+  "ms_per_image": 7.56,
+  "accuracy_pct": 94.19,
+  "precision_pct": 93.49,
+  "recall_pct": 95.0,
+  "f1_score": 0.9424,
+  "roc_auc": 0.9865,
+  "optimal_threshold": 0.146199,
+  "confusion_matrix": [
+    [
+      65367,
+      4633
+    ],
+    [
+      3497,
+      66503
+    ]
+  ]
+}

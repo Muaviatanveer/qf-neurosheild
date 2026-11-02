@@ -1,0 +1,25 @@
+# Environments
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+
+# Large Archives & Datasets (Do NOT push to Git)
+*.zip
+*.tar.gz
+data/raw/
+data/140k_faces/
+temp_dataset/
+archive (9).zip
+
+# Checkpoint Weights (> 100MB violates GitHub free limits)
+checkpoints/*.pt
+*.pt
+checkpoints/onnx/*.onnx
+
+# IDE
+.vscode/
+.idea/

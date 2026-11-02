@@ -1,0 +1,11 @@
+video_id,filepath,label,manipulation,split
+real_1,data/raw/REAL/real_1.mp4,REAL,none,test
+real_2,data/raw/REAL/real_2.mp4,REAL,none,train
+real_3,data/raw/REAL/real_3.mp4,REAL,none,val
+real_4,data/raw/REAL/real_4.mp4,REAL,none,train
+real_5,data/raw/REAL/real_5.MOV,REAL,none,train
+fake_1,data/raw/FAKE/fake_1.mp4,FAKE,synthetic_or_ffpp,val
+fake_2,data/raw/FAKE/fake_2.mp4,FAKE,synthetic_or_ffpp,train
+fake_3,data/raw/FAKE/fake_3.mp4,FAKE,synthetic_or_ffpp,test
+fake_4,data/raw/FAKE/fake_4.mp4,FAKE,synthetic_or_ffpp,train
+fake_5,data/raw/FAKE/fake_5.mov,FAKE,synthetic_or_ffpp,train

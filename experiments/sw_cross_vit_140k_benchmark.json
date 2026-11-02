@@ -1,0 +1,23 @@
+{
+  "architecture": "SW-CrossViT (2-Level Haar DWT + 8-Head Spatial-Wavelet Cross-Attention)",
+  "total_archive_indexed": 140000,
+  "train_samples": 6000,
+  "test_samples": 4000,
+  "accuracy_pct": 94.1,
+  "precision_pct": 93.32,
+  "recall_pct": 95.0,
+  "f1_score": 0.9415,
+  "roc_auc": 0.9865,
+  "optimal_threshold_tau": 0.146199,
+  "confusion_matrix": [
+    [
+      1864,
+      136
+    ],
+    [
+      100,
+      1900
+    ]
+  ],
+  "ms_per_image": 7.44
+}

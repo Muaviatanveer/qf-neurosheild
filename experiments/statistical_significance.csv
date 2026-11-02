@@ -1,0 +1,4 @@
+Architecture,Evaluation_Protocol,Accuracy_Mean_Std,F1_Mean_Std,ROC_AUC_Mean_Std
+E1/E2: Classical / Federated ViT Head,5-Fold CV x 3 Seeds,0.07 ± 0.09,0.07 ± 0.09,0.08 ± 0.11
+E4: Hybrid Quantum VQC Head (4-Qubit),5-Fold CV x 3 Seeds,0.33 ± 0.09,0.33 ± 0.09,0.31 ± 0.07
+E5: Neuromorphic Spiking SNN Head,5-Fold CV x 3 Seeds,0.07 ± 0.09,0.07 ± 0.09,0.09 ± 0.13

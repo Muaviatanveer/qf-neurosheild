@@ -1,0 +1,3 @@
+Edge_Module,ONNX_Artifact,Size_KB,PyTorch_Latency_ms,ONNX_Runtime_Latency_ms,Speedup_Factor
+Classical Head (Federated),checkpoints/onnx/federated_classical_head.onnx,12.47,0.0132,0.009,1.46x
+Neuromorphic Head (10-Step SNN),checkpoints/onnx/neuromorphic_spiking_head.onnx,406.89,1.3329,0.0576,23.14x

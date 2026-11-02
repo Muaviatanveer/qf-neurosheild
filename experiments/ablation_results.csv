@@ -1,0 +1,6 @@
+Experiment,Checkpoint,Trainable_Params,Optimal_Threshold,Test_Loss,Test_Acc,Test_F1,Test_ROC_AUC,Latency_ms_per_Video
+E1: Classical ViT (Centralized),checkpoints/baseline_vit.pt,3074,0.659667,0.5553,1.0,1.0,1.0,175.09
+E2/E3: Federated ViT + Blockchain,checkpoints/federated_global_vit.pt,3074,0.775595,0.608,1.0,1.0,1.0,176.03
+E4: Hybrid Quantum ViT (4-Qubit VQC),checkpoints/quantum_vit.pt,24752,0.502104,0.6979,0.5,0.0,0.0,181.42
+E5: Neuromorphic Spiking ViT (SNN),checkpoints/spiking_vit.pt,98690,0.502934,0.7312,0.5,0.6667,0.0,179.24
+"E6: Proposed SW-CrossViT (2-Level Haar DWT + Cross-Attn, N=4000)",checkpoints/sw_cross_vit_140k.pt,11819010,0.1462,0.1482,0.941,0.9415,0.9865,7.44
