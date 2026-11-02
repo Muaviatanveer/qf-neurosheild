@@ -11,15 +11,24 @@
 
 **A Modular Multi-Disciplinary AI Platform Bridging Visual Transformers, GPU Wavelet Cross-Attention, Spiking Neuromorphic Computing, Variational Quantum Circuits, and Permissioned Blockchain Auditability.**
 
-[System Architecture](#-system-architecture) • [Empirical Results](#-140000-image-benchmark-results) • [Ablation Study](#-controlled-ablation-study-experiments-e1e6) • [Quickstart](#-quickstart) • [Workstation](#-veritas-v10-scientific-intelligence-workstation)
+[About](#-about-the-project) • [Architecture](#-system-architecture) • [Math Foundations](#-mathematical-foundations--governing-formulations) • [Empirical Results](#-140000-image-benchmark-results) • [Ablation Study](#-controlled-ablation-study-experiments-e1e6) • [Quickstart](#-quickstart) • [Workstation](#-veritas-v10-scientific-intelligence-workstation)
 
 </div>
 
 ---
 
-## ⚡ Executive Summary & Key Breakthroughs
+## 📖 About the Project
 
-**VERITAS (QF-NeuroShield)** is a scientific deepfake detection and computational forensics platform engineered to overcome the three core bottlenecks of contemporary synthetic media detection: **spatial semantic overfitting**, **JPEG compression false-positives**, and **edge deployment latency**.
+**VERITAS (QF-NeuroShield)** is an open-source, peer-review-grade synthetic media forensics framework developed to solve the critical vulnerabilities of contemporary deepfake detection models:
+
+1. **Spatial Overfitting & Pose Sensitivity:** Classical CNN and ViT detectors rely predominantly on spatial RGB semantic features. When subjected to minor head poses, camera angle shifts, or lighting changes, these models frequently suffer from catastrophic epistemic uncertainty—hallucinating false-positive manipulations.
+2. **Frequency Blindness:** Generative models (e.g., ProGAN, StyleGAN2/3, Diffusion) leave microscopic high-frequency artifacts (upsampling checkerboards, phase co-occurrences, and Benford DCT digit anomalies) that are invisible in RGB space but clearly discernable in orthogonal frequency representations.
+3. **Institutional Data Privacy & Provenance:** Centralizing sensitive facial biometric datasets poses strict legal and privacy barriers (GDPR/HIPAA). VERITAS solves this by deploying decentralized **Federated Averaging (`FedAvg`)** verified by a **Permissioned Blockchain Control Plane** with cryptographic SHA-256 hash chains and Byzantine gradient screening ($\|\Delta W\|_2 \le 5.0$).
+4. **Edge Deployment Bottlenecks:** Neuromorphic computing via **Leaky Integrate-and-Fire (LIF)** spiking dynamics compiled to **ONNX Runtime graphs** enables continuous microsecond-level edge inference ($0.057\text{ ms}$) on low-power devices.
+
+---
+
+## ⚡ Executive Summary & Key Breakthroughs
 
 * **🏆 94.19% Accuracy across 140,000 Images:** Evaluated on the complete 140,000 Real (FFHQ) and Synthetic (StyleGAN) image archive, achieving **95.00% Fake Recall (TPR)**, **0.9424 F1-score**, and **0.9865 ROC-AUC** at **132.4 FPS (7.56 ms/image)** on Apple Silicon MPS.
 * **🧠 Novel Architecture (`SW-CrossViT`):** Integrates an end-to-end differentiable **2-Level 2D Discrete Haar Wavelet Transform (DWT)** running on the GPU with an **8-Head Spatial-Wavelet Cross-Attention Gate** and a Spatial-Frequency Discrepancy Manifold ($|Z_S - Z_W|$), yielding a **+24.1% accuracy gain** over baseline ViT.
@@ -66,6 +75,60 @@ flowchart TB
         H_SW --> UI["FastAPI + Interactive UI\n• Live Forensic Analysis & Heatmaps\n• KaTeX Mathematical Lab\n• 3D WebGL Architecture Explorer\n• Real-Time Webcam HUD"]
     end
 ```
+
+---
+
+## 📐 Mathematical Foundations & Governing Formulations
+
+<details open>
+<summary><b>Click to expand formal equations across all 5 scientific subsystems</b></summary>
+
+<br>
+
+### 1. Dual-Stream Spatial-Wavelet Cross-Attention (`SW-CrossViT`)
+Every input image $I \in \mathbb{R}^{3 \times 224 \times 224}$ is decomposed on the GPU via 2-level 2D Haar discrete wavelet transform into orthogonal sub-bands $\{W_{\text{LH}}, W_{\text{HL}}, W_{\text{HH}}\}$. Spatial ViT patch embeddings $Z_S \in \mathbb{R}^{196 \times 768}$ and wavelet patch embeddings $Z_W \in \mathbb{R}^{196 \times 768}$ interact through 8-head cross-attention and a spatial-frequency discrepancy manifold:
+
+$$Z_{\text{cross}} = \text{Softmax}\left(\frac{Z_S Z_W^T}{\sqrt{d_k}}\right)Z_W, \qquad \Delta Z_{\text{disc}} = \left| Z_S - Z_W \right|$$
+
+$$\text{Fused Feature Vector: } z = \left[ \text{CLS} \;\|\; \frac{1}{196}\sum_{i=1}^{196} Z_{\text{cross}}^{(i)} \;\|\; \frac{1}{196}\sum_{i=1}^{196} \Delta Z_{\text{disc}}^{(i)} \right] \in \mathbb{R}^{2304}$$
+
+$$\hat{y} = \sigma\left(\mathbf{W}_2 \cdot \text{GELU}(\mathbf{W}_1 z + b_1) + b_2\right)$$
+
+---
+
+### 2. 3rd-Order Bispectral Quadratic Phase Coupling
+While 2nd-order power spectra $|F(\omega)|^2$ discard phase relationships, the 3rd-order bispectrum detects nonlinear phase harmonic coupling induced by generative upsampling layers across radial frequency slices:
+
+$$\mathcal{B}(\omega_1, \omega_2) = \frac{\left| \mathbb{E}\left[ F(\omega_1) F(\omega_2) F^*(\omega_1 + \omega_2) \right] \right|}{\sqrt{\mathbb{E}\left[|F(\omega_1) F(\omega_2)|^2\right] \cdot \mathbb{E}\left[|F(\omega_1 + \omega_2)|^2\right]}}$$
+
+When $\mathcal{B}(\omega_1, \omega_2) \to 1$, quadratic phase coupling signifies synthetic convolutional upsampling grid footprints.
+
+---
+
+### 3. Generalized Benford's Law 2D-DCT Quantization Divergence
+In authentic natural imagery, the distribution of leading significant digits $d \in \{1, \dots, 9\}$ of $8 \times 8$ block DCT AC coefficients adheres to Generalized Benford's Law. Generative synthesis and re-sampling induce anomalous divergence measured via Kullback-Leibler distance:
+
+$$D_{\text{KL}}(P_{\text{emp}} \parallel P_{\text{Benford}}) = \sum_{d=1}^9 P_{\text{emp}}(d) \ln\left(\frac{P_{\text{emp}}(d)}{P_{\text{Benford}}(d)}\right), \quad P_{\text{Benford}}(d) = \frac{\log_{10}(1 + d^{-q})}{\sum_{k=1}^9 \log_{10}(1 + k^{-q})}$$
+
+---
+
+### 4. Byzantine-Screened Federated Aggregation Condition
+Participating institutions submit localized parameter updates $W_{t+1}^{(k)}$. The permissioned control-plane contract (`FederatedAuditLedger.sol`) asserts deterministic model provenance and screens for Byzantine gradient poisoning prior to $\text{FedAvg}$ accumulation:
+
+$$W_{t+1} = \sum_{k=1}^{K} \frac{n_k}{N} W_{t+1}^{(k)} \quad \Longleftrightarrow \quad \forall k: \; \|W_{t+1}^{(k)} - W_t\|_2 \le \tau_{\max} \quad (\tau_{\max} = 5.0)$$
+
+$$\text{Block Hash: } H_{\text{block}} = \text{SHA-256}\left( H_{\text{prev}} \;\Vert\; \text{Round} \;\Vert\; \text{Addr}_k \;\Vert\; \text{SHA-256}(W_{t+1}^{(k)}) \right)$$
+
+---
+
+### 5. Discrete Neuromorphic Spiking Dynamics (LIF)
+The 10-step temporal spiking classifier head processes the spatial-wavelet feature representation via discrete Leaky Integrate-and-Fire neurons with surrogate fast-sigmoid gradients:
+
+$$V_{t+1} = \beta V_t + W x_{t+1} - S_t V_{\text{th}}, \qquad S_t = \Theta(V_t - V_{\text{th}}), \qquad \frac{\partial S_t}{\partial V_t} = \frac{1}{(1 + 25|V_t - V_{\text{th}}|)^2}$$
+
+$$\text{Temporal Firing Rate Output: } \hat{y}_c = \frac{1}{T} \sum_{t=1}^{T} S_{t, c} \quad (T = 10, \; \beta = 0.90)$$
+
+</details>
 
 ---
 
